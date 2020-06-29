@@ -1,0 +1,67 @@
+<div class="container"
+     [nbSpinner]="loading"
+     nbSpinnerStatus="danger"
+     nbSpinnerSize="large"
+     nbSpinnerMessage="">
+  <div class="row">
+<!--       Esto deberia ser un componente -->
+    <div class="col-12 mt-4">
+      <nb-card>
+        <nb-card-body>
+        <!-- Input buscador -->
+          <h3 class="text-center znq-text-primary">Bienvenidos sean todos los DNI</h3>
+          <form (ngSubmit)="searchDni()" [formGroup]="dniGroup">
+          <nb-form-field class="znq-mw-500 mx-auto">
+            <nb-icon nbPrefix 
+                     icon="at-outline"
+                     pack="eva"
+                     [ngClass]="{'status-danger': (!dniGroup.controls['dniToSearch'].valid &&
+                       !dniGroup.controls['dniToSearch'].pristine)}">
+            </nb-icon>
+                <input class="znq-mw-500"
+                       formControlName="dniToSearch"
+                       [ngClass]="{'status-danger': (!dniGroup.controls['dniToSearch'].valid &&
+                       !dniGroup.controls['dniToSearch'].pristine)}"
+                       nbTooltip="Introduce um DNI de 8 digitos :)"
+                       nbTooltipPlacement="left"
+                       type="number"
+                       nbInput
+                       [disabled]="controlInput"/>
+            </nb-form-field>
+            <div class="znq-mw-500 mx-auto">
+              <button type="submit" class="btn btn-block btn-primary mt-2">Enviar</button>
+            </div>
+            </form>
+          <div class="alert alert-danger znq-mw-500 mx-auto my-2"
+               role="alert"
+               *ngIf="!dniGroup.controls['dniToSearch'].valid &&
+               !dniGroup.controls['dniToSearch'].pristine">
+            Hey! se supone que debes introducir tu DNI
+          </div>
+          <div class="alert alert-danger znq-mw-500 mx-auto my-2"
+               role="alert"
+               *ngIf="dniToSearch?.value.length > 8">
+            maximo 8
+          </div>
+        <!-- Input buscador -->
+        </nb-card-body>
+      </nb-card>
+    </div>
+<!------------------------------------->
+
+<!-- Esto deberia ser otro componente -->
+    <div class="col-12 mt-4" *ngIf="controlTabla">
+      <nb-card>
+        <nb-card-body>
+          <div class="details-content">
+            <h5 class="znq-text-primary">Nombre: <span class="text-dark">{{userData.nombre}}</span> </h5>
+            <h5 class="znq-text-primary">Fecha de nacimiento: <span class="text-dark">{{userData.fechaDeNac}}</span> </h5>
+            <h5 class="znq-text-primary">Scoring: <span class="text-dark">{{userData.scoring}}</span> </h5>
+            <h5 class="znq-text-primary">CUIT: <span class="text-dark">{{userData.CUIT}}</span> </h5>
+          </div>
+        </nb-card-body>
+      </nb-card>
+    </div>
+<!-------------------------------------->
+  </div>
+</div>

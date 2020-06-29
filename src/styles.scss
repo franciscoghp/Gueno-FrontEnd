@@ -1,0 +1,21 @@
+@import 'themes';
+
+@import '~@nebular/theme/styles/globals';
+
+@include nb-install() {
+  @include nb-theme-global();
+};
+/* You can add global styles to this file, and also import other style files */
+
+.znq-mw-500 {
+  width: 500px !important;
+  max-width: 100% !important;
+}
+.znq-mw-600 {
+  width: 600px !important;
+  max-width: 100% !important;
+}
+
+.znq-text-primary {
+  color: #3b55bb !important;
+}

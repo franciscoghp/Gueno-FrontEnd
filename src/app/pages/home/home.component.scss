@@ -1,0 +1,13 @@
+.details-content {
+  padding: 2rem;
+}
+
+h5 {
+  font-style: 1.3rem;
+}
+
+@media (max-width: 420px) {
+  h5 {
+    font-size: 1rem;
+  }
+}
